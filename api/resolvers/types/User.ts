@@ -1,0 +1,12 @@
+import { ObjectType, Field } from "type-graphql";
+
+@ObjectType()
+export class User {
+    @Field()
+    id: string;
+    @Field()
+    email: String;
+
+    @Field()
+    avatarUrl: String;
+}
