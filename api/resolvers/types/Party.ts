@@ -1,8 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Group } from "./Group";
 import { User } from "./User";
-import { Inject } from "typedi";
-
 
 @ObjectType()
 export class Party {

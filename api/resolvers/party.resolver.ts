@@ -29,7 +29,7 @@ export class PartyResolver {
     }
 
     @Mutation(_ => Boolean)
-    async addInterested(@Arg("id") id: string, @Ctx() { user }) {
+    async markAsInterested(@Arg("id") id: string, @Ctx() { user }) {
         const party = await this.partyRepository.getById(id)
         party.addInterested(user)
         await party.save()
