@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const wrapper = {
     connect() {
-        mongoose.connect('mongodb://localhost:27017/pedais', { useNewUrlParser: true })
+        mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
     }
 }
 
