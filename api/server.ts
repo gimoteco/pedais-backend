@@ -29,11 +29,11 @@ const graphql = {
         const server = new ApolloServer({
             schema,
             context: async ({ req }: { req: any }) => {
-                const user = {
+                const user = req.cognito ? {
                     id: req.cognito.sub,
                     email: req.cognito.email,
                     avatarUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/kushsolitary/128.jpg'
-                }
+                } : null
                 return { user }
             }
         })
