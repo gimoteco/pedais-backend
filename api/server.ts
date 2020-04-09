@@ -52,8 +52,9 @@ const graphql = {
 async function main() {
     database.connect()
     const app = await graphql.configure()
+    const port = process.env.PORT || 80
 
-    app.listen({ port: 4000 }, () => {
+    app.listen({ port }, () => {
         console.log(`🚀  Server ready at 4000\n`);
     });
 }
