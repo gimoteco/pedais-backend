@@ -29,9 +29,9 @@ export class PartyResolver {
     }
 
     @Mutation(_ => Boolean)
-    async markAsInterested(@Arg("id") id: string, @Ctx() { user }) {
+    async toggleInterest(@Arg("id") id: string, @Ctx() { user }) {
         const party = await this.partyRepository.getById(id)
-        party.addInterested(user)
+        party.toggleInterest(user)
         await party.save()
         return true
     }
@@ -43,6 +43,6 @@ export class PartyResolver {
 
     @FieldResolver()
     coverImageUrl(@Root() party: Party) {
-        return party._doc.coverImage ? this.bucketManager.getObjectUrl(party._doc.coverImage) : party.name
+        return party._doc.coverImage ? this.bucketManager.getObjectUrl(party._doc.coverImage) : null
     }
 }

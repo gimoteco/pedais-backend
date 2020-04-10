@@ -29,8 +29,12 @@ export class Party {
     @prop({ ref: User, default: [] })
     interested?: User[]
 
-    addInterested(interested: User) {
-        this.interested.push(interested)
+    toggleInterest(interested: User) {
+        if (this.interested.some(i => i.id === interested.id))
+            this.interested = this.interested.filter(i => i.id !== interested.id)
+        else {
+            this.interested.push(interested)
+        }
     }
 }
 
