@@ -6,6 +6,10 @@ import database from "../infrastructure/database"
 import { Container } from "typedi";
 import { authenticate, authenticationError } from 'aws-cognito-express'
 import cors from "cors"
+import dotenv from 'dotenv'
+
+
+dotenv.config()
 
 const authMiddleware = (req, res, next) => {
     console.log(req.path, req.method)
@@ -55,7 +59,7 @@ async function main() {
     const port = process.env.PORT || 80
 
     app.listen({ port }, () => {
-        console.log(`🚀  Server ready at 4000\n`);
+        console.log(`🚀  Server ready`);
     });
 }
 

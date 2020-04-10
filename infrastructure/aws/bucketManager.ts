@@ -26,11 +26,6 @@ export class BucketManager {
     }
 
     getObjectUrl(filename): string {
-        const url = s3.getSignedUrl('getObject', {
-            Bucket: bucketName,
-            Key: filename,
-            Expires: 60 * 60
-        })
-        return url
+        return `https://pedal-images.s3.amazonaws.com/${filename}`
     }
 }
