@@ -12,7 +12,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const authMiddleware = (req, res, next) => {
-    console.log(req.path, req.method)
     if (req.path === '/graphql' && req.method !== 'GET')
         authenticate({
             region: 'us-east-1',

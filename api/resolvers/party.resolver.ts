@@ -43,7 +43,6 @@ export class PartyResolver {
 
     @FieldResolver()
     coverImageUrl(@Root() party: Party) {
-        console.log(party)
         return party._doc.coverImage ? this.bucketManager.getObjectUrl(party._doc.coverImage) : party.name
     }
 }

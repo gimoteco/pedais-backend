@@ -15,7 +15,6 @@ export class BucketManager {
         const hash = uuid()
         const contentType = mime.contentType(filename)
         const ext = extname(filename)
-        console.log(hash + ext)
         const url = s3.getSignedUrl('putObject', {
             Bucket: bucketName,
             Key: hash + ext,
