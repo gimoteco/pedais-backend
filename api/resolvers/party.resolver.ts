@@ -1,10 +1,10 @@
-import { Query, Resolver, Mutation, Arg, FieldResolver, Root, Ctx } from "type-graphql";
+import { Arg, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { Inject, Service } from "typedi";
-import { PartyTypegooseRepository } from "../../infrastructure/databaseRepositories/partyRepository";
-import { AddPartyInput } from "./types/PartyInput";
-import { Party } from "./types/Party";
-import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository";
 import { BucketManager } from "../../infrastructure/aws/bucketManager";
+import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository";
+import { PartyTypegooseRepository } from "../../infrastructure/databaseRepositories/partyRepository";
+import { Party } from "./types/Party";
+import { AddPartyInput } from "./types/PartyInput";
 
 @Service()
 @Resolver(of => Party)
@@ -23,11 +23,13 @@ export class PartyResolver {
         return await this.partyRepository.getById(id)
     }
 
+    @Authorized()
     @Mutation(_ => Party)
     async createParty(@Arg("input") input: AddPartyInput) {
         return this.partyRepository.create(input)
     }
 
+    @Authorized()
     @Mutation(_ => Boolean)
     async toggleInterest(@Arg("id") id: string, @Ctx() { user }) {
         const party = await this.partyRepository.getById(id)
