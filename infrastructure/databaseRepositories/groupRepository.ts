@@ -1,7 +1,6 @@
+import { Service } from "typedi";
 import { GroupRepository } from "../../domain/GroupRepository";
 import GroupModel from "../models/Group";
-import { Service } from "typedi";
-import { } from "type-graphql"
 
 @Service()
 export class GroupTypegooseRepository implements GroupRepository {
