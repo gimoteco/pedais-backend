@@ -32,6 +32,9 @@ export class Party {
     @prop()
     location?: string
 
+    @prop()
+    safetyInstructions?: string
+
     toggleInterest(interested: User) {
         if (this.interested.some(i => i.id === interested.id))
             this.interested = this.interested.filter(i => i.id !== interested.id)

@@ -30,5 +30,8 @@ export class Party {
     @Field({ nullable: true })
     location?: String
 
+    @Field({ nullable: true })
+    safetyInstructions?: String
+
     _doc: any
 }

@@ -22,4 +22,7 @@ export class AddPartyInput {
 
     @Field({ nullable: true })
     location?: string;
+
+    @Field({ nullable: true })
+    safetyInstructions?: string;
 }
