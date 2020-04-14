@@ -51,6 +51,11 @@ export class PartyResolver {
     }
 
     @FieldResolver()
+    async interested(@Root() party: Party) {
+        return await this.userRepository.getMany(party._doc.interested)
+    }
+
+    @FieldResolver()
     coverImageUrl(@Root() party: Party) {
         return party._doc.coverImage ? this.bucketManager.getObjectUrl(party._doc.coverImage) : null
     }

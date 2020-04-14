@@ -17,6 +17,11 @@ export class UserTypegooseRepository {
         return user
     }
 
+    getMany(ids) {
+        return UserModel.find({
+            _id: { $in: ids }
+        })
+    }
 
     getById(id) {
         return UserModel.findById(id)

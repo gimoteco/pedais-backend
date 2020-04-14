@@ -1,12 +1,13 @@
-import { ObjectType, Field } from "type-graphql";
+import { Field, ID, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class User {
-    @Field()
+    @Field(_ => ID)
     id: string;
+
     @Field()
     email: String;
 
-    @Field()
+    @Field({ nullable: true })
     avatarUrl: String;
 }
