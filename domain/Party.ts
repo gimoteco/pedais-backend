@@ -29,6 +29,9 @@ export class Party {
     @prop({ ref: User, default: [] })
     interested?: User[]
 
+    @prop()
+    location?: string
+
     toggleInterest(interested: User) {
         if (this.interested.some(i => i.id === interested.id))
             this.interested = this.interested.filter(i => i.id !== interested.id)

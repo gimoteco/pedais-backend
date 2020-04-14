@@ -27,5 +27,8 @@ export class Party {
     @Field({ nullable: true })
     coverImageUrl: String | null
 
+    @Field({ nullable: true })
+    location?: String
+
     _doc: any
 }

@@ -19,4 +19,7 @@ export class AddPartyInput {
 
     @Field({ nullable: true })
     coverImage?: string;
+
+    @Field({ nullable: true })
+    location?: string;
 }
