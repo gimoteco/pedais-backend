@@ -7,6 +7,7 @@ import "reflect-metadata";
 import { AuthChecker, buildSchema } from 'type-graphql';
 import { Container } from "typedi";
 import database from "../infrastructure/database";
+import { UserTypegooseRepository } from '../infrastructure/databaseRepositories/userRepository';
 
 
 dotenv.config()
@@ -33,6 +34,8 @@ const graphql = {
             container: Container
         })
 
+        const userRepo = Container.get(UserTypegooseRepository)
+
         const server = new ApolloServer({
             schema,
 
@@ -47,11 +50,7 @@ const graphql = {
                     catch { }
                 }
 
-                const user = payload ? {
-                    id: payload.sub,
-                    email: payload.email,
-                    avatarUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/kushsolitary/128.jpg'
-                } : null
+                const user = payload ? await userRepo.getOrCreate(payload.email, payload.sub) : null
                 return { user }
             }
         })

@@ -35,6 +35,9 @@ export class Party {
     @prop()
     safetyInstructions?: string
 
+    @prop({ ref: User })
+    creator: User
+
     toggleInterest(interested: User) {
         if (this.interested.some(i => i.id === interested.id))
             this.interested = this.interested.filter(i => i.id !== interested.id)

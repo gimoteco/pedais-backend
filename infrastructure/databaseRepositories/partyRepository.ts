@@ -1,6 +1,6 @@
-import PartyModel from "../models/Party";
 import { Service } from "typedi";
 import { PartyRepository } from "../../domain/PartyRepository";
+import PartyModel from "../models/Party";
 
 @Service()
 export class PartyTypegooseRepository implements PartyRepository {
@@ -12,7 +12,10 @@ export class PartyTypegooseRepository implements PartyRepository {
         return PartyModel.findById(id)
     }
 
-    async create(input) {
-        return PartyModel.create(input)
+    async create(input, creator) {
+        return PartyModel.create({
+            ...input,
+            creator: creator.id
+        })
     }
 }

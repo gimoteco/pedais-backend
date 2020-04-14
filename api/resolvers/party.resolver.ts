@@ -3,6 +3,7 @@ import { Inject, Service } from "typedi";
 import { BucketManager } from "../../infrastructure/aws/bucketManager";
 import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository";
 import { PartyTypegooseRepository } from "../../infrastructure/databaseRepositories/partyRepository";
+import { UserTypegooseRepository } from "../../infrastructure/databaseRepositories/userRepository";
 import { Party } from "./types/Party";
 import { AddPartyInput } from "./types/PartyInput";
 
@@ -11,6 +12,7 @@ import { AddPartyInput } from "./types/PartyInput";
 export class PartyResolver {
     @Inject() private partyRepository: PartyTypegooseRepository;
     @Inject() private groupRepository: GroupTypegooseRepository;
+    @Inject() private userRepository: UserTypegooseRepository;
     @Inject() private bucketManager: BucketManager;
 
     @Query(_ => [Party])
@@ -25,8 +27,8 @@ export class PartyResolver {
 
     @Authorized()
     @Mutation(_ => Party)
-    async createParty(@Arg("input") input: AddPartyInput) {
-        return this.partyRepository.create(input)
+    async createParty(@Arg("input") input: AddPartyInput, @Ctx() { user: creator }) {
+        return this.partyRepository.create(input, creator)
     }
 
     @Authorized()
@@ -41,6 +43,11 @@ export class PartyResolver {
     @FieldResolver()
     async group(@Root() party: Party) {
         return await this.groupRepository.getById(party._doc.group)
+    }
+
+    @FieldResolver()
+    async creator(@Root() party: Party) {
+        return await this.userRepository.getById(party._doc.creator)
     }
 
     @FieldResolver()

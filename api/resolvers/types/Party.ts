@@ -23,6 +23,7 @@ export class Party {
         defaultValue: []
     }) interested: User[];
 
+    @Field(_ => User, { nullable: true }) creator: User
 
     @Field({ nullable: true })
     coverImageUrl: String | null
