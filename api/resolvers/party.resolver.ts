@@ -16,8 +16,14 @@ export class PartyResolver {
     @Inject() private bucketManager: BucketManager;
 
     @Query(_ => [Party])
-    async parties() {
-        return await this.partyRepository.getAll()
+    async nextParties() {
+        return await this.partyRepository.getAllComingSoon()
+    }
+
+    @Authorized()
+    @Query(_ => [Party], { nullable: true })
+    async myParties(@Ctx() { user }) {
+        return await this.partyRepository.getPartiesForUser(user)
     }
 
     @Query(_ => Party)

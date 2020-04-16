@@ -27,7 +27,7 @@ export class Party {
     group?: Group
 
     @prop({ ref: User, default: [] })
-    interested?: User[]
+    interested?: string[]
 
     @prop()
     location?: string
@@ -39,10 +39,10 @@ export class Party {
     creator: User
 
     toggleInterest(interested: User) {
-        if (this.interested.some(i => i.id === interested.id))
-            this.interested = this.interested.filter(i => i.id !== interested.id)
+        if (this.interested.includes(interested.id))
+            this.interested = this.interested.filter(i => i !== interested.id)
         else {
-            this.interested.push(interested)
+            this.interested.push(interested.id)
         }
     }
 }
