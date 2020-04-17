@@ -4,7 +4,7 @@ import { User } from "./types/User";
 @Resolver()
 export class AuthResolver {
 
-    @Query(_ => User)
+    @Query(_ => User, { nullable: true })
     async me(@Ctx() { user }) {
         return user
     }
