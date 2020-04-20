@@ -3,8 +3,8 @@ import { prop } from "@typegoose/typegoose"
 export class Group {
     id: string
 
-    @prop()
-    enabled = false
+    @prop({ default: true })
+    enabled = true
 
     @prop()
     name: string

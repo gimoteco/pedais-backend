@@ -1,9 +1,8 @@
 import { Service } from "typedi"
-import { GroupRepository } from "../../domain/GroupRepository"
 import GroupModel from "../models/Group"
 
 @Service()
-export class GroupTypegooseRepository implements GroupRepository {
+export class GroupTypegooseRepository {
     getAllGroups() {
         return GroupModel.find()
     }
