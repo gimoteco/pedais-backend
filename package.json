@@ -4,7 +4,7 @@
   "description": "The backend for pedais app",
   "main": "index.js",
   "scripts": {
-    "start-dev-server": "ts-node api/server.ts",
+    "start-dev-server": "ts-node -r dotenv/config api/server.ts",
     "start": "nodemon",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
