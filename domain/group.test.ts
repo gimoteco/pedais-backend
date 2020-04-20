@@ -1,7 +1,7 @@
 import { Group } from "./Group"
 
 describe("Group", () => {
-    it('should disable', () => {
+    it("should disable", () => {
         const someGroup = new Group()
 
         someGroup.disable()

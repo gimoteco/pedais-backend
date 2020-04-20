@@ -1,7 +1,7 @@
-import { Query, Resolver, Ctx, Arg } from "type-graphql";
-import { Service, Inject } from "typedi";
-import { BucketManager } from "../../infrastructure/aws/bucketManager";
-import { UploadAsset } from "./types/Upload";
+import { Arg, Query, Resolver } from "type-graphql"
+import { Inject, Service } from "typedi"
+import { BucketManager } from "../../infrastructure/aws/bucketManager"
+import { UploadAsset } from "./types/Upload"
 
 @Service()
 @Resolver()

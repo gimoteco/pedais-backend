@@ -1,10 +1,10 @@
-import { Service } from "typedi";
-import { PartyRepository } from "../../domain/PartyRepository";
-import PartyModel from "../models/Party";
+import { Service } from "typedi"
+import { PartyRepository } from "../../domain/PartyRepository"
+import PartyModel from "../models/Party"
 @Service()
 export class PartyTypegooseRepository implements PartyRepository {
     getAllComingSoon() {
-        return PartyModel.find({ date: { $gte: new Date() } }).sort({ date: 'asc' })
+        return PartyModel.find({ date: { $gte: new Date() } }).sort({ date: "asc" })
     }
 
     getById(id) {
@@ -14,7 +14,7 @@ export class PartyTypegooseRepository implements PartyRepository {
     async getPartiesForUser(user) {
         return PartyModel.find({
             interested: user.id
-        }).sort({ date: 'asc' })
+        }).sort({ date: "asc" })
     }
 
     async create(input, creator) {

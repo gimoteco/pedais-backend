@@ -1,12 +1,12 @@
-import { Service } from "typedi";
-import AWS from 'aws-sdk'
-import mime from 'mime-types'
-import { v4 as uuid } from 'uuid'
-import { extname } from 'path'
+import { Service } from "typedi"
+import AWS from "aws-sdk"
+import mime from "mime-types"
+import { v4 as uuid } from "uuid"
+import { extname } from "path"
 
-AWS.config.update({ region: 'us-east-1' });
-const s3 = new AWS.S3({ apiVersion: '2006-03-01' });
-const bucketName = 'pedal-images'
+AWS.config.update({ region: "us-east-1" })
+const s3 = new AWS.S3({ apiVersion: "2006-03-01" })
+const bucketName = "pedal-images"
 
 @Service()
 export class BucketManager {
@@ -15,7 +15,7 @@ export class BucketManager {
         const hash = uuid()
         const contentType = mime.contentType(filename)
         const ext = extname(filename)
-        const url = s3.getSignedUrl('putObject', {
+        const url = s3.getSignedUrl("putObject", {
             Bucket: bucketName,
             Key: hash + ext,
             ContentType: contentType,

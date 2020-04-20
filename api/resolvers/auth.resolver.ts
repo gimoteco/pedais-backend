@@ -1,10 +1,10 @@
-import { Ctx, Query, Resolver } from "type-graphql";
-import { User } from "./types/User";
+import { Ctx, Query, Resolver } from "type-graphql"
+import { User } from "./types/User"
 
 @Resolver()
 export class AuthResolver {
 
-    @Query(_ => User, { nullable: true })
+    @Query(() => User, { nullable: true })
     async me(@Ctx() { user }) {
         return user
     }

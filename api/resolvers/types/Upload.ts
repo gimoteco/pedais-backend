@@ -1,4 +1,4 @@
-import { ObjectType, Field, ID } from "type-graphql";
+import { Field, ObjectType } from "type-graphql"
 
 @ObjectType()
 export class UploadAsset {

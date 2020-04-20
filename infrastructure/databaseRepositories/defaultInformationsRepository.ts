@@ -1,5 +1,5 @@
-import { Service } from "typedi";
-import DefaultInformations from "../models/DefaultInformations";
+import { Service } from "typedi"
+import DefaultInformations from "../models/DefaultInformations"
 
 @Service()
 export class DefaultInformationsTypegooseRepository {

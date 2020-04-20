@@ -1,14 +1,14 @@
-import { Arg, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
-import { Inject, Service } from "typedi";
-import { BucketManager } from "../../infrastructure/aws/bucketManager";
-import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository";
-import { PartyTypegooseRepository } from "../../infrastructure/databaseRepositories/partyRepository";
-import { UserTypegooseRepository } from "../../infrastructure/databaseRepositories/userRepository";
-import { Party } from "./types/Party";
-import { AddPartyInput } from "./types/PartyInput";
+import { Arg, Authorized, Ctx, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql"
+import { Inject, Service } from "typedi"
+import { BucketManager } from "../../infrastructure/aws/bucketManager"
+import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository"
+import { PartyTypegooseRepository } from "../../infrastructure/databaseRepositories/partyRepository"
+import { UserTypegooseRepository } from "../../infrastructure/databaseRepositories/userRepository"
+import { Party } from "./types/Party"
+import { AddPartyInput } from "./types/PartyInput"
 
 @Service()
-@Resolver(of => Party)
+@Resolver(() => Party)
 export class PartyResolver {
     @Inject() private partyRepository: PartyTypegooseRepository;
     @Inject() private groupRepository: GroupTypegooseRepository;

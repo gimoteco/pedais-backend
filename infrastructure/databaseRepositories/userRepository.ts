@@ -1,5 +1,5 @@
-import { Service } from "typedi";
-import UserModel from "../models/User";
+import { Service } from "typedi"
+import UserModel from "../models/User"
 
 @Service()
 export class UserTypegooseRepository {

@@ -1,12 +1,12 @@
-import { Query, Resolver, Mutation, Arg, FieldResolver } from "type-graphql";
+import { Arg, Mutation, Query, Resolver } from "type-graphql"
+import { Inject, Service } from "typedi"
+import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository"
 import GroupModel from "../../infrastructure/models/Group"
-import { Service, Inject } from "typedi";
-import { GroupTypegooseRepository } from "../../infrastructure/databaseRepositories/groupRepository";
-import { Group } from "./types/Group";
-import { GroupInput } from "./types/GroupInput";
+import { Group } from "./types/Group"
+import { GroupInput } from "./types/GroupInput"
 
 @Service()
-@Resolver(of => Group)
+@Resolver(() => Group)
 export class GroupResolver {
     @Inject()
     private groupRepository: GroupTypegooseRepository;
