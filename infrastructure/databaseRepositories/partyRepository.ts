@@ -7,6 +7,10 @@ export class PartyTypegooseRepository {
         return PartyModel.find({ date: { $gte: new Date() } }).sort({ date: "asc" })
     }
 
+    getAll() {
+        return PartyModel.find().sort({ date: "asc" })
+    }
+
     getById(id) {
         return PartyModel.findById(id)
     }

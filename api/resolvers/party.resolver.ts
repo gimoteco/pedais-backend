@@ -16,7 +16,9 @@ export class PartyResolver {
     @Inject() private bucketManager: BucketManager;
 
     @Query(_ => [Party])
-    async nextParties() {
+    async parties(@Arg("showPast", { nullable: true }) showPast: boolean) {
+        if (showPast) return await this.partyRepository.getAll()
+
         return await this.partyRepository.getAllComingSoon()
     }
 
