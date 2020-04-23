@@ -1,11 +1,11 @@
 import Container from "typedi"
-import setup, { teardown } from "../integrationsTest.setup"
+import { setupDatabase, teardownDatabase } from "../database.testing.setup"
 import Group from "../models/Group"
 import { GroupTypegooseRepository } from "./groupRepository"
 
 describe("PartyTypegooseRepository", () => {
-    beforeAll(setup)
-    afterAll(teardown)
+    beforeAll(setupDatabase)
+    afterAll(teardownDatabase)
 
     it("should create a group", async () => {
         const groupRepository = Container.get(GroupTypegooseRepository)

@@ -1,12 +1,12 @@
 import Container from "typedi"
-import setup, { teardown } from "../integrationsTest.setup"
+import { setupDatabase, teardownDatabase } from "../database.testing.setup"
 import Party from "../models/Party"
 import User from "../models/User"
 import { PartyTypegooseRepository } from "./partyRepository"
 
 describe("PartyTypegooseRepository", () => {
-    beforeAll(setup)
-    afterAll(teardown)
+    beforeAll(setupDatabase)
+    afterAll(teardownDatabase)
 
     it("should create a party", async () => {
         const partyRepository = Container.get(PartyTypegooseRepository)

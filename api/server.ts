@@ -1,11 +1,9 @@
-import dotenv from "dotenv"
 import "reflect-metadata"
 import database from "../infrastructure/database"
+import "./config"
 import { graphql } from "./graphql"
 
-dotenv.config()
-
-async function main() {
+export async function main() {
     database.connect()
     const app = await graphql.configure()
     const port = process.env.PORT || 80
