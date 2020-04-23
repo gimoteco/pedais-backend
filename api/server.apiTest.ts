@@ -1,6 +1,6 @@
 import ApolloClient, { gql } from "apollo-boost"
 import fetch from "node-fetch"
-import { setupDatabase, teardownDatabase } from "../infrastructure/database.testing.setup"
+import { setupInMemoryMongoDB } from "../infrastructure/databaseRepositories/setupInMemoryMongoDB"
 import Group from "../infrastructure/models/Group"
 import "./server"
 
@@ -9,10 +9,9 @@ const client = new ApolloClient({
     fetch: fetch as any,
 })
 
-beforeAll(setupDatabase)
-afterAll(teardownDatabase)
-
 describe("GraphQL api", () => {
+    setupInMemoryMongoDB()
+
     it("should fetch the groups", async () => {
         const groupName = "Chickens Bikers"
         await Group.create({ name: groupName })

@@ -1,9 +1,17 @@
 import mongoose from "mongoose"
 
-const wrapper = {
-    connect() {
-        return mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+let connection: typeof mongoose
+
+export const database = {
+    async connect(uri) {
+        const connection = await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+        return connection
+    },
+    async disconnect() {
+        return connection && connection.disconnect()
+    },
+
+    get connection() {
+        return connection
     }
 }
-
-export default wrapper

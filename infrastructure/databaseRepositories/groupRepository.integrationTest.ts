@@ -1,11 +1,10 @@
 import Container from "typedi"
-import { setupDatabase, teardownDatabase } from "../database.testing.setup"
 import Group from "../models/Group"
 import { GroupTypegooseRepository } from "./groupRepository"
+import { setupInMemoryMongoDB } from "./setupInMemoryMongoDB"
 
-describe("PartyTypegooseRepository", () => {
-    beforeAll(setupDatabase)
-    afterAll(teardownDatabase)
+describe("GroupTypegooseRepository", () => {
+    setupInMemoryMongoDB()
 
     it("should create a group", async () => {
         const groupRepository = Container.get(GroupTypegooseRepository)
