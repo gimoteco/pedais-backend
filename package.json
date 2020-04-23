@@ -7,9 +7,9 @@
         "start-dev-server": "ts-node -r dotenv/config api/server.ts",
         "start": "nodemon",
         "build": "tsc",
-        "test": "npx jest",
-        "integrationTest": "npx jest -c jest.config.integration.js --forceExit",
-        "apiTest": "cross-env NODE_ENV=test npx jest -c jest.config.api.js --forceExit",
+        "test": "jest",
+        "integrationTest": "jest -c jest.config.integration.js --forceExit",
+        "apiTest": "jest -c jest.config.api.js --forceExit",
         "lint": "npx eslint --ext ts ./"
     },
     "engines": {
