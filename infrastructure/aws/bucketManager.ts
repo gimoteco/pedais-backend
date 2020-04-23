@@ -1,8 +1,8 @@
-import { Service } from "typedi"
 import AWS from "aws-sdk"
 import mime from "mime-types"
-import { v4 as uuid } from "uuid"
 import { extname } from "path"
+import { Service } from "typedi"
+import { v4 as uuid } from "uuid"
 
 AWS.config.update({ region: "us-east-1" })
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" })
@@ -25,6 +25,6 @@ export class BucketManager {
     }
 
     getObjectUrl(filename): string {
-        return `https://pedal-images.s3.amazonaws.com/${filename}`
+        return `https://${bucketName}.s3.amazonaws.com/${filename}`
     }
 }

@@ -18,7 +18,6 @@ export class PartyResolver {
     @Query(_ => [Party])
     async parties(@Arg("showPast", { nullable: true }) showPast: boolean) {
         if (showPast) return await this.partyRepository.getAll()
-
         return await this.partyRepository.getAllComingSoon()
     }
 
