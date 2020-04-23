@@ -29,5 +29,6 @@ jobs:
     - run: npm run lint
     - run: npm test
     - run: npm run integrationTest
+    - run: npm run apiTest
       env:
         CI: true
