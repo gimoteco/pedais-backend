@@ -50,7 +50,7 @@ describe("GraphQL api", () => {
         expect(data.groups[0]).toMatchObject({ name: groupName })
     })
 
-    it("should get user's parties", async () => {
+    xit("should get user's parties", async () => {
         const authenticatedClient = await getClient(false)
 
         const { data } = await authenticatedClient.query({
