@@ -4,7 +4,7 @@ let connection: typeof mongoose
 
 export const database = {
     async connect(uri) {
-        const connection = await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+        connection = await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
         return connection
     },
     async disconnect() {

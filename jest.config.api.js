@@ -4,5 +4,5 @@ module.exports = {
     testPathIgnorePatterns: ["/node_modules/", "/dist/"],
     testRegex: "\\.apiTest\\.",
     testTimeout: 10000,
-    globalSetup: "<rootDir>/infrastructure/globalSetupIntegration.ts"
+    globalSetup: "<rootDir>/infrastructure/__testing/globalSetupIntegration.ts"
 }
