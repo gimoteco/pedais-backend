@@ -1,10 +1,15 @@
 import { MongoMemoryServer } from "mongodb-memory-server"
 import database from "./database"
 
-const server = new MongoMemoryServer()
+const server = new MongoMemoryServer({
+    instance: {
+        port: 27017,
+        dbName: "pedais"
+    }
+})
 
 export const setupDatabase = async () => {
-    process.env.MONGODB_URI = await server.getUri()
+    await server.start()
     await database.connect()
 }
 

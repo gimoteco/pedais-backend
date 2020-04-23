@@ -9,7 +9,7 @@
         "build": "tsc",
         "test": "jest",
         "integrationTest": "jest -c jest.config.integration.js --forceExit",
-        "apiTest": "jest -c jest.config.api.js --forceExit",
+        "apiTest": "cross-env MONGODB_URI=mongodb://127.0.0.1:27017/pedais jest -c jest.config.api.js --forceExit --testTimeout 20000",
         "lint": "npx eslint --ext ts ./"
     },
     "engines": {
