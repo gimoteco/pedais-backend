@@ -4,7 +4,7 @@ export class Group {
     id: string
 
     @prop({ default: true })
-    enabled = true
+    enabled: boolean = true
 
     @prop()
     name: string
